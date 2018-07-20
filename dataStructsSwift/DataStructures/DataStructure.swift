@@ -9,13 +9,13 @@
 import Foundation
 
 protocol ContainerDataStructure {
-	var count: Int? { get }
+	var count: Int! { get }
 	func printStructure()
 }
 
 protocol LinkedListed {
 	subscript(index: Int) -> Int? { get }
-//	mutating func insert(atTheEnd value: Int)
+	mutating func insert(atTheEnd value: Int)
 	mutating func append(nodeWith value: Int)
 }
 

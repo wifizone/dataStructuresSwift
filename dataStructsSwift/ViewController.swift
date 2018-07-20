@@ -12,7 +12,11 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		let linkedList = LinkedList()
+		linkedList.append(nodeWith: 4)
+		linkedList.append(nodeWith: 45)
+		linkedList.insert(atTheEnd: 3)
+		linkedList.printStructure()
 	}
 
 	override func didReceiveMemoryWarning() {

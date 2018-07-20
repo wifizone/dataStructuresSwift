@@ -22,18 +22,19 @@ class LinkedList: ContainerDataStructure, LinkedListed {
 		count = 0
 	}
 	
-	var count: Int
+	var count: Int!
 	var head: Node?
 	
 	func printStructure() {
-		var node = head
-		while (node?.nextNode != nil) {
-			print(node!.data!)
-			node = node?.nextNode
+		while let currentHead = head {
+			if let data = currentHead.data {
+				print("\(String(describing: data)) -> ", terminator:"")
+			}
+			head = currentHead.nextNode
 		}
 	}
 	
-	subscript(index: Int) -> Int? {
+	subscript(index:Int) -> Int? {
 		get {
 			var currentNode = head
 			for _ in 1..<index {
@@ -43,14 +44,32 @@ class LinkedList: ContainerDataStructure, LinkedListed {
 		}
 	}
 	
-	func append(nodeWith value: Int) {
-		count += 1
-		let node = Node(value)
+	func append(nodeWith value:Int) {
+		count = count + 1
 		
-		if (head != nil) {
-			node.nextNode = head
+		let newHead = Node(value)
+		newHead.nextNode = head
+		head = newHead
+		
+		print("Node with value \(value) was added at the beginning")
+	}
+	
+	func insert(atTheEnd value: Int) {
+		var currentHead = head
+		let newNode = Node(value)
+		
+		if currentHead == nil {
+			head = newNode
 		}
-		
-		head = node
+		else {
+			while currentHead != nil {
+				if currentHead?.nextNode == nil {
+					currentHead?.nextNode = newNode
+					break
+				}
+				currentHead = currentHead?.nextNode
+			}
+		}
+		print("Node with value \(value) was added at the end")
 	}
 }
