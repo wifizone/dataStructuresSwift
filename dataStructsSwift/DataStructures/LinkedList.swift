@@ -25,6 +25,20 @@ class LinkedList: ContainerDataStructure, LinkedListed {
 	var count: Int!
 	var head: Node?
 	
+	func getIndexOfElement(withValue value: Int) -> Int {
+		var currentHead = head
+		var index = 0
+		
+		while currentHead != nil {
+			if currentHead?.data == value {
+				return index
+			}
+			currentHead = currentHead?.nextNode
+			index += 1
+		}
+		return -1
+	}
+	
 	func printStructure() {
 		while let currentHead = head {
 			if let data = currentHead.data {

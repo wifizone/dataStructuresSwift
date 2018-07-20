@@ -10,6 +10,7 @@ import Foundation
 
 protocol ContainerDataStructure {
 	var count: Int! { get }
+	func getIndexOfElement(withValue value:Int) -> Int
 	func printStructure()
 }
 
